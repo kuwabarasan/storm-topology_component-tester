@@ -11,7 +11,7 @@ if [ $# -eq 0 ]; then
   echo "            local (for custom writelocal bolt)"
   echo ""
   echo "NOTE:  Specifying no spout will run a default custom spout (RandomSentenceSpout)."
-  echo "       You must select at least one bolt.
+  echo "       You must select at least one bolt."
   echo ""
   echo "For more information:  http://github.com/kuwabarasan"
   echo ""
