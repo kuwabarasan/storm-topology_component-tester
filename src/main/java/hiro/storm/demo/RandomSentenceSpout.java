@@ -70,9 +70,9 @@ public class RandomSentenceSpout extends BaseRichSpout{
         int randomNum3 = ThreadLocalRandom.current().nextInt(0, 9);
         int randomNum4 = ThreadLocalRandom.current().nextInt(0, 9);
 
-        return "The " + SINGULAR_NOUNS_1[WORD_BANK_LENGTH % randomNum1]
-                + " " + VERBS[WORD_BANK_LENGTH % randomNum2]
-                + " the " + ADJECTIVES[WORD_BANK_LENGTH % randomNum3]
-                + " " + SINGULAR_NOUNS_2[WORD_BANK_LENGTH % randomNum4];
+        return "The " + SINGULAR_NOUNS_1[randomNum1 % WORD_BANK_LENGTH]
+                + " " + VERBS[randomNum2 % WORD_BANK_LENGTH]
+                + " the " + ADJECTIVES[randomNum3 % WORD_BANK_LENGTH]
+                + " " + SINGULAR_NOUNS_2[randomNum4 % WORD_BANK_LENGTH];
     }
 }

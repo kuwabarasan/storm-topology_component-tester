@@ -46,9 +46,12 @@ public class HBaseBoltGen {
     public static boolean isSecure(){
         Configuration configuration = new Configuration();
         configuration.addResource("hbase-site.xml");
-        if(configuration.get("hbase.security.authentication").equalsIgnoreCase("kerberos"))
+        if (configuration.get("hbase.security.authentication") == null)
+            LOG.info("Property 'hbase.security.authentication' not found in hbase-site.xml.");
+        else if(configuration.get("hbase.security.authentication").equalsIgnoreCase("kerberos"))
             return true;
-        else return false;
+
+        return false;
     }
 
 }

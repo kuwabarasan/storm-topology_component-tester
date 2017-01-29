@@ -63,9 +63,12 @@ public class HDFSBoltGen {
     public static boolean isSecure(){
         Configuration configuration = new Configuration();
         configuration.addResource("hdfs-site.xml");
-        if(configuration.get("hadoop.security.authentication").equalsIgnoreCase("kerberos"))
+        if (configuration.get("hadoop.security.authentication") == null)
+            LOG.info("Property 'hadoop.security.authentication' not found in hbase-site.xml.");
+        else if(configuration.get("hadoop.security.authentication").equalsIgnoreCase("kerberos"))
             return true;
-        else return false;
+
+        return false;
     }
 
 }

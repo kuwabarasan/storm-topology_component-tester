@@ -54,14 +54,14 @@ public class ComponentTester {
 		try {
 			builder = choiceBuilder(choices, props, config);
 		} catch (Exception e){
-			LOG.error("Error building topology: " + e);
+			LOG.error("Error building topology", e);
 			return;
 		}
 
 		try {
 			StormSubmitter.submitTopology(args[1], config, builder.createTopology());
 		} catch (Exception e) {
-			LOG.error("Error submitting topology to cluster: " + e);
+			LOG.error("Error submitting topology to cluster", e);
 		}
 	}
 
@@ -72,7 +72,7 @@ public class ComponentTester {
 		try (FileReader reader = new FileReader(path)) {
 			props.load(reader);
 		} catch (IOException e) {
-			LOG.error("Error encountered loading properties file: " + e);
+			LOG.error("Error encountered loading properties file", e);
 			throw new IOException("Cannot load properties file.");
 		}
 		return props;
@@ -94,7 +94,7 @@ public class ComponentTester {
 	private static boolean validateChoices(List<String> choices){
 		for (String choice : choices){
 			if (!choice.equals("kafka") && !choice.equals("hbase")
-					&& !choice.equals("hdfs") && !choice.equals("hive")){
+					&& !choice.equals("hdfs") && !choice.equals("local")){
 				LOG.error(choice + " is not a valid argument.  Please check your arguments.");
 				return false;
 			}
